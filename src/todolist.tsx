@@ -11,6 +11,7 @@ const TodoList = ()=>{
         setTodos(newValue);
     }
     const submit = (e)=>{
+        e.preventDefault();
         setTodoArr([todos, todoArr])
         alert(`Added todo: ${todos}`);
     }
@@ -18,7 +19,7 @@ const TodoList = ()=>{
         <div>
             <h1>Vite + React Todo List </h1>
             <div className="main-container">
-            <input type="text" placeholder="add a new todo" onChange={change}></input>
+            <input type="text" placeholder="add a new todo" value={todos} onChange={change}></input>
             <button type="submit" onClick={submit}> Add task</button>
             <ul>
                 <li >{todos}...</li>
