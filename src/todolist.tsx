@@ -3,16 +3,16 @@ import React from "react"
 import { useState } from "react";
 
 const TodoList = ()=>{
-    const [todos, setTodos] = useState([""]);
-    const [todoArr, setTodoArr]= useState(["exampleArray"]);
-
+    const [todos, setTodos] = useState("");
+    const [todoArr, setTodoArr]= useState([]);
+    const randomKey = Math.random()*100;
     const change =(e)=>{
         const newValue = e.target.value
         setTodos(newValue);
     }
     const submit = (e)=>{
-        setTodoArr([...todos, todos])
-        alert(todos);
+        setTodoArr([todos, todoArr])
+        alert(`Added todo: ${todos}`);
     }
     return (
         <div>
@@ -24,7 +24,7 @@ const TodoList = ()=>{
                 <li >{todos}...</li>
                 {todoArr.map((todo)=>{
                     return (
-                        <li key="1">{todo}</li>
+                        <li key={randomKey}>{todo}</li>
                     );
                 })}
             </ul>
