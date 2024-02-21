@@ -5,9 +5,6 @@ import './App.css'
 import TodoList from './todolist'
 
 function App() {
-  const [todos, setTodos] = useState([])
-  const [newTodo, setNewTodo]=useState([""])
-
   return (
     <>
       <div>
@@ -15,8 +12,6 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
       </div>
       <TodoList />
-    
-
     </>
   )
 }
