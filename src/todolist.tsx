@@ -9,7 +9,6 @@ const TodoList = ()=>{
         setTodos(newValue);
     }
     const submit = (e)=>{
-
         setTodoArr([todos, ...todoArr])
     }
 
@@ -20,8 +19,10 @@ const TodoList = ()=>{
         <div>
             <h1>Vite + React Todo List </h1>
             <div className="main-container">
-            <input type="text" placeholder="add a new todo" value={todos} onChange={change}></input>
-            <button className="primary-btn"type="submit" onClick={submit}> Add task</button>
+            <div className="input-container">
+                <input type="text" placeholder="add a new todo" value={todos} onChange={change}></input>
+                <button className="primary-btn"type="submit" onClick={submit}> Add task</button>
+            </div>
             <ul>
                 {todoArr.map((todo, index)=>{
                     return (

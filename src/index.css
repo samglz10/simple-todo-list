@@ -46,6 +46,7 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 .secondary-btn{
   border-radius: 25px;
   border: 1px solid transparent;
@@ -60,6 +61,12 @@ button {
 .secondary-btn:hover{
   border-color: #ffffff;
 }
+
+.todo-wrapper{
+  display: flex;
+  justify-content: space-around;
+}
+
 
 button:hover {
   border-color: #646cff;
