@@ -9,10 +9,13 @@ const TodoList = ()=>{
     const [newTodo, setNewTodo] = useState({task:'',done: false,});
     const [todos, setTodos]= useState<Todo[]>(()=>{
         const existingTodos = localStorage.getItem('todos');
-        if(existingTodos === null){
-            return []
+        console.log(existingTodos)
+        if(existingTodos === null || existingTodos === undefined){
+            return [];
+        } else {
+            return JSON.parse(existingTodos)
         }
-        return JSON.parse(existingTodos)
+       
     });
 
     const handleChange =(e)=>{
@@ -22,13 +25,12 @@ const TodoList = ()=>{
     const handleComplete = (index:number)=>{
        setTodos((prevTodos)=>{
         const newTodos = prevTodos.slice(index,1);
-        console.log("before", newTodos)
-        prevTodos = newTodos[index].done = true;
+        console.log("newTodo",newTodos)
+        newTodos[index].done = true;
         console.log("after",newTodos)
-
-        
-
+    
        })
+       
         
     }
     const handleSubmit = ()=>{
@@ -55,7 +57,7 @@ const TodoList = ()=>{
                     <button className="primary-btn"type="submit" onClick={handleSubmit}> Add task</button>
                 </div>
             <ul>
-                {todos.map((todo, index)=>{
+                {todos && todos.map((todo, index)=>{
                     return (
                         <div className="todo-wrapper" key={index}>
                             <li onClick={()=>{handleComplete(index)}} className="todos" >{todo.task}</li>
