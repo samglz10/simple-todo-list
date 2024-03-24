@@ -6,11 +6,10 @@ type Todo = {
     done: boolean
 }
 const TodoList = ()=>{
-    const [newTodo, setNewTodo] = useState({task:'',done: false,});
+    const [newTodo, setNewTodo] = useState({task:'', done: false,});
     const [todos, setTodos]= useState<Todo[]>(()=>{
         const existingTodos = localStorage.getItem('todos');
-        console.log(existingTodos)
-        if(existingTodos === null || existingTodos === undefined){
+        if(existingTodos === undefined ||existingTodos === null ){
             return [];
         } else {
             return JSON.parse(existingTodos)
@@ -23,19 +22,32 @@ const TodoList = ()=>{
         setNewTodo(prevTodo=> ({...prevTodo, task: newValue}));
     }
     const handleComplete = (index:number)=>{
+        
        setTodos((prevTodos)=>{
-        const newTodos = prevTodos.slice(index,1);
-        console.log("newTodo",newTodos)
+        console.log(index)
+        const newTodos = prevTodos.slice(index);
         newTodos[index].done = true;
-        console.log("after",newTodos)
-    
+        const completed = []
+       console.log('prevTodos', prevTodos)
+       console.log('newTodos', newTodos, newTodos[index].done)
+        
        })
+       
+
+        
+        /*
+        const newTodos = prevTodos.slice(index,1);
+        [{...prevTodos, newTodos.[index].done: true}]
+        
+             */
+     
+       
        
         
     }
     const handleSubmit = ()=>{
         setTodos([newTodo, ...todos])
-        console.log(newTodo)
+    
     }
     const handleDeleteTask = (index)=>{
         let removeTodo = [...todos];
